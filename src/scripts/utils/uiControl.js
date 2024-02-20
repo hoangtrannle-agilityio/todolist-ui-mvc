@@ -1,7 +1,7 @@
 // Create an element with an optional CSS class
-export const createElement = (tag, className) => {
+export const createElement = (tag, classNames) => {
   const element = document.createElement(tag);
-  if (className) element.classList.add(className);
+  if (classNames) element.classList.add(...classNames.split(" "));
   return element;
 };
 
