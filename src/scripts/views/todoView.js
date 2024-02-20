@@ -52,6 +52,7 @@ export default class TodoView {
       finishBtn.setAttribute("type", "button");
       finishBtn.textContent = "Finish";
       todoAction.append(deleteBtn, finishBtn);
+      if (todo.isCompleted) todoAction.removeChild(finishBtn);
 
       //Append children to todo item
       todoItem.append(todoIndex, todoTitle, todoStatus, todoAction);
@@ -67,6 +68,9 @@ export default class TodoView {
       if (e.target.className.includes("btn-finish")) {
         const id = e.target.parentElement.parentElement.id;
         const todoDataUpdate = {
+          title:
+            e.target.parentElement.parentElement.querySelector("td")
+              .textContent,
           isCompleted: true,
         };
         handler(id, todoDataUpdate);
