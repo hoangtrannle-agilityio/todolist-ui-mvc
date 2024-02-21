@@ -1,3 +1,4 @@
+import { todoItemTemplate } from "../templates/todoItem";
 import { createElement, getElement } from "../utils/uiControl";
 
 export default class TodoView {
@@ -28,34 +29,10 @@ export default class TodoView {
     }
 
     todos.forEach((todo, index) => {
-      //Init todo item
+      const { id, title, isCompleted } = todo;
       const todoItem = createElement("tr");
       todoItem.id = todo.id;
-
-      const todoIndex = createElement("th");
-      todoIndex.textContent = index + 1;
-
-      const todoTitle = createElement("td");
-      todoTitle.textContent = todo.title;
-
-      const todoStatus = createElement("td");
-      todoStatus.textContent = todo.isCompleted ? "Completed" : "In progress";
-
-      const todoAction = createElement("td");
-      const deleteBtn = createElement("button", "btn btn-danger btn-delete");
-      deleteBtn.setAttribute("type", "submit");
-      deleteBtn.textContent = "Delete";
-      const finishBtn = createElement(
-        "button",
-        "btn btn-success ms-1 btn-finish"
-      );
-      finishBtn.setAttribute("type", "button");
-      finishBtn.textContent = "Finish";
-      todoAction.append(deleteBtn, finishBtn);
-      if (todo.isCompleted) todoAction.removeChild(finishBtn);
-
-      //Append children to todo item
-      todoItem.append(todoIndex, todoTitle, todoStatus, todoAction);
+      todoItem.innerHTML = todoItemTemplate(index, id, title, isCompleted);
 
       //Append item to todo list
       this.todoList.append(todoItem);
