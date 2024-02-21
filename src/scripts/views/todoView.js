@@ -1,5 +1,7 @@
+import { toastMessage } from "../constants/toastMessage";
 import { todoItemTemplate } from "../templates/todoItem";
 import { closeModal, openModal } from "../utils/modalControl";
+import { showToast } from "../utils/toastControl";
 import { createElement, getElement } from "../utils/uiControl";
 
 export default class TodoView {
@@ -32,6 +34,7 @@ export default class TodoView {
         isCompleted: false,
       };
       handler(todoData);
+      showToast(toastMessage.ADDED_SUCCESS);
       this.resetInput();
     });
   };
@@ -77,6 +80,7 @@ export default class TodoView {
         this.confirmDeleteBtn.addEventListener("click", (e) => {
           e.preventDefault();
           handler(id);
+          showToast(toastMessage.DELETED_SUCCESS);
           closeModal(".delete-modal");
         });
         this.cancelModalBtn.addEventListener("click", (e) => {
