@@ -67,14 +67,15 @@
         </div>
       </div>
     </section>
-    <div class="modal delete-modal" tabindex="-1">
-      <div class="modal-dialog">
+    <!-- Modal -->
+    <div class="modal delete-modal" aria-hidden="true" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">DELETE</h5>
+            <h5 class="modal-title" id="exampleModalToggleLabel">DELETE</h5>
             <button
               type="button"
-              class="btn-close btn-close-modal"
+              class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
             ></button>
@@ -83,12 +84,12 @@
             <p>Are you sure want to delete this item?</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-confirm-delete">
+            <button type="button" class="btn btn-danger btn-confirm-delete">
               Yes
             </button>
             <button
               type="button"
-              class="btn btn-secondary btn-cancel-modal"
+              class="btn btn-primary btn-cancel-modal"
               data-bs-dismiss="modal"
             >
               No
