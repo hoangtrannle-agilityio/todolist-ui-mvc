@@ -1,6 +1,6 @@
 export const todoItemTemplate = (index, id, title, isCompleted) => {
   return `
-        <th scope="row">${index}</th>
+        <th scope="row">${index + 1}</th>
             <td>${title}</td>
             <td>${!isCompleted ? "In progress" : "Finished"}</td>
             <td>
