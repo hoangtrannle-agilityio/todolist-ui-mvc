@@ -1,4 +1,5 @@
 import { todoItemTemplate } from "../templates/todoItem";
+import { closeModal, openModal } from "../utils/modalControl";
 import { createElement, getElement } from "../utils/uiControl";
 
 export default class TodoView {
@@ -6,9 +7,13 @@ export default class TodoView {
     this.saveBtn = getElement("#save-btn");
     this.input = getElement("#input");
     this.todoList = getElement(".todo-list");
-    this.deleteBtn = getElement(".btn-btn");
-    this.finishBtn = getElement(".btn-btn");
+    this.deleteBtn = getElement(".btn-delete");
+    this.finishBtn = getElement(".btn-finish");
     this.errorMessage = getElement(".error-message");
+    this.deleteModal = getElement(".delete-modal");
+    this.confirmDeleteBtn = getElement(".btn-confirm-delete");
+    this.closeModalBtn = getElement(".btn-close-modal");
+    this.cancelModalBtn = getElement(".btn-cancel-modal");
   }
 
   resetInput = () => {
@@ -68,7 +73,16 @@ export default class TodoView {
       e.preventDefault();
       if (e.target.className.includes("btn-delete")) {
         const id = e.target.parentElement.parentElement.id;
-        handler(id);
+        openModal(".delete-modal");
+        this.confirmDeleteBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          handler(id);
+          closeModal(".delete-modal");
+        });
+        this.cancelModalBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          closeModal(".delete-modal");
+        });
       }
     });
   };
