@@ -4,10 +4,10 @@ export const todoItemTemplate = (index, id, title, isCompleted) => {
             <td>${title}</td>
             <td>${!isCompleted ? "In progress" : "Finished"}</td>
             <td>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-danger btn-delete">Delete</button>
                 ${
                   !isCompleted
-                    ? '<button type="submit" class="btn btn-success ms-1">Finished</button>'
+                    ? '<button type="submit" class="btn btn-success ms-1 btn-finish">Finished</button>'
                     : ""
                 }
             </td>    

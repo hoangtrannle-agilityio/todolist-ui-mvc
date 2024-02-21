@@ -1,1 +1,1 @@
-{todos:[{id:'1',title:'Learn JS',isCompleted:true},{id:'2',title:'Take a rest',isCompleted:false},{id:'9e2d',title:'Clean the house',isCompleted:false},{id:'cad9',title:'test',isCompleted:false},{id:'0374',title:'hi',isCompleted:false},{id:'9253',title:'test new data',isCompleted:false}]}
+{todos:[{id:'1',title:'Learn JS',isCompleted:true},{id:'2',title:'Take a rest',isCompleted:false},{id:'9e2d',title:'Clean the house',isCompleted:false},{id:'cad9',title:'test',isCompleted:false},{id:'0374',title:'hi',isCompleted:false},{title:'test new data',isCompleted:true,id:'9253'}]}

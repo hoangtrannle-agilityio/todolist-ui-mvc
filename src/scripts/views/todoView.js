@@ -8,18 +8,26 @@ export default class TodoView {
     this.todoList = getElement(".todo-list");
     this.deleteBtn = getElement(".btn-btn");
     this.finishBtn = getElement(".btn-btn");
+    this.errorMessage = getElement(".error-message");
   }
+
+  resetInput = () => {
+    this.input.value = "";
+  };
 
   addTodo = (handler) => {
     this.saveBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      if (this.input.value === "") return;
+      if (this.input.value === "") {
+        this.errorMessage.textContent = "Task is required !";
+        return;
+      }
       const todoData = {
         title: this.input.value,
         isCompleted: false,
       };
       handler(todoData);
-      this.input.value = "";
+      this.resetInput();
     });
   };
 
