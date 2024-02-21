@@ -1,4 +1,5 @@
 import { toastMessage } from "../constants/toastMessage";
+import { validations } from "../constants/validation";
 import { todoItemTemplate } from "../templates/todoItem";
 import { closeModal, openModal } from "../utils/modalControl";
 import { showToast } from "../utils/toastControl";
@@ -16,17 +17,27 @@ export default class TodoView {
     this.confirmDeleteBtn = getElement(".btn-confirm-delete");
     this.closeModalBtn = getElement(".btn-close-modal");
     this.cancelModalBtn = getElement(".btn-cancel-modal");
+
+    this._clearErrorMessage();
   }
 
-  resetInput = () => {
+  _resetInputValue = () => {
     this.input.value = "";
+  };
+
+  _clearErrorMessage = () => {
+    this.input.addEventListener("keyup", (e) => {
+      if (e.target.value && this.errorMessage !== "") {
+        this.errorMessage.textContent = "";
+      }
+    });
   };
 
   addTodo = (handler) => {
     this.saveBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (this.input.value === "") {
-        this.errorMessage.textContent = "Task is required !";
+        this.errorMessage.textContent = validations.title.message;
         return;
       }
       const todoData = {
@@ -35,7 +46,7 @@ export default class TodoView {
       };
       handler(todoData);
       showToast(toastMessage.ADDED_SUCCESS);
-      this.resetInput();
+      this._resetInputValue();
     });
   };
 
