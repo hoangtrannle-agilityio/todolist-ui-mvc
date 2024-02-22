@@ -1,0 +1,25 @@
+{
+  "name": "javascript-training",
+  "version": "1.0.0",
+  "description": "To make it easy for you to get started with GitLab, here's a list of recommended next steps.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rm -rf dist && rm -rf .parcel-cache && parcel ./src/pages/*.html --no-cache --no-source-maps",
+    "build": "rm -rf build && rm -rf .parcel-cache && parcel build ./src/pages/*.html --no-cache --no-source-maps --dist-dir build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "buffer": "^5.5.0||^6.0.0",
+    "crypto-browserify": "^3.12.0",
+    "events": "^3.1.0",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.11.0",
+    "path-browserify": "^1.0.0",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

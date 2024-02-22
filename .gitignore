@@ -1,0 +1,16 @@
+# Build & development
+/dist
+/build
+
+# Packages
+/node_modules
+
+# Cache
+.parcel-cache
+
+# env
+.env.development
+.env.production
+
+#db
+db.json5
